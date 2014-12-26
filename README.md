@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/burningriverbitworks/codemash.png?label=ready&title=Ready)](https://waffle.io/burningriverbitworks/codemash)
 CodeMash "The App" 
 ========
 ![CodeMash The App](http://digital.coolspringspress.com/rp_columns_images/images/1920.jpg)
