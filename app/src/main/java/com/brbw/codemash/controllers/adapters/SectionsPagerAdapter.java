@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.brbw.codemash.R;
-import com.brbw.codemash.controllers.fragments.PlaceholderFragment;
+import com.brbw.codemash.controllers.fragments.SessionListFragment;
 import com.brbw.codemash.models.Day;
 
 import java.util.Locale;
@@ -26,13 +26,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return PlaceholderFragment.newInstance(Day.TUESDAY);
+                return SessionListFragment.newInstance(Day.TUESDAY);
             case 1:
-                return PlaceholderFragment.newInstance(Day.WEDNESDAY);
+                return SessionListFragment.newInstance(Day.WEDNESDAY);
             case 2:
-                return PlaceholderFragment.newInstance(Day.THURSDAY);
+                return SessionListFragment.newInstance(Day.THURSDAY);
             case 3:
-                return PlaceholderFragment.newInstance(Day.FRIDAY);
+                return SessionListFragment.newInstance(Day.FRIDAY);
         }
         return null;
     }
