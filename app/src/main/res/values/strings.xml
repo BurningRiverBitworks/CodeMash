@@ -7,5 +7,6 @@
     <string name="wednesday">wed</string>
     <string name="thursday">thurs</string>
     <string name="friday">fri</string>
+    <string name="empty_session_list_message">No sessions available!</string>
 
 </resources>
