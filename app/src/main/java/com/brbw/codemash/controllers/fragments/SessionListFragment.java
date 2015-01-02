@@ -3,8 +3,12 @@ package com.brbw.codemash.controllers.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.widget.ArrayAdapter;
 
 import com.brbw.codemash.models.Day;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SessionListFragment extends ListFragment {
 
@@ -27,6 +31,13 @@ public class SessionListFragment extends ListFragment {
         if (this.hasArguments()) {
             day = (Day) getArguments().getSerializable(ARG_DAY);
         }
+
+        List<String> emptyList = new ArrayList<>();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1,emptyList);
+
+        setListAdapter(arrayAdapter);
     }
 
     private boolean hasArguments() {
