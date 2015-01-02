@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +15,8 @@ import com.brbw.codemash.controllers.adapters.SectionsPagerAdapter;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
+    private static final String LOG_TAG = "MainActivity";
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -21,6 +24,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(LOG_TAG,"onCreate was called");
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
