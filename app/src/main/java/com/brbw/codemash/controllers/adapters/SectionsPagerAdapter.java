@@ -1,10 +1,10 @@
 package com.brbw.codemash.controllers.adapters;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.brbw.codemash.controllers.activities.MainActivity;
 import com.brbw.codemash.R;
 import com.brbw.codemash.controllers.fragments.PlaceholderFragment;
 
@@ -12,11 +12,12 @@ import java.util.Locale;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private MainActivity mainActivity;
+    private static final int TOTAL_NUMBER_OF_CONFERENCE_DAYS = 4;
+    private Context context;
 
-    public SectionsPagerAdapter(MainActivity mainActivity, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        this.mainActivity = mainActivity;
+        this.context = context;
     }
 
     @Override
@@ -26,7 +27,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return TOTAL_NUMBER_OF_CONFERENCE_DAYS;
     }
 
     @Override
@@ -34,12 +35,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Locale l = Locale.getDefault();
         switch (position) {
             case 0:
-                return mainActivity.getString(R.string.title_section1).toUpperCase(l);
+                return context.getString(R.string.tuesday).toUpperCase(l);
             case 1:
-                return mainActivity.getString(R.string.title_section2).toUpperCase(l);
+                return context.getString(R.string.wednesday).toUpperCase(l);
             case 2:
-                return mainActivity.getString(R.string.title_section3).toUpperCase(l);
+                return context.getString(R.string.thursday).toUpperCase(l);
+            case 3:
+                return context.getString(R.string.friday).toUpperCase(l);
         }
-        return null;
+        return "";
     }
 }
