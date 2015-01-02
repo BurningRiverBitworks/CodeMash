@@ -10,6 +10,7 @@ import com.brbw.codemash.R;
 import com.brbw.codemash.models.Day;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SessionListFragment extends ListFragment {
@@ -30,14 +31,17 @@ public class SessionListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (this.hasArguments()) {
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity()
+                ,android.R.layout.simple_list_item_1);
+
+        if (this.hasArgumentsFor(ARG_DAY)) {
             day = (Day) getArguments().getSerializable(ARG_DAY);
+
+            List<String> singleItemList = Arrays.asList(day.name());
+            arrayAdapter.addAll(singleItemList);
+
         }
-
-        List<String> emptyList = new ArrayList<>();
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1,emptyList);
 
         setListAdapter(arrayAdapter);
     }
@@ -49,8 +53,8 @@ public class SessionListFragment extends ListFragment {
         setEmptyText(message);
     }
 
-    private boolean hasArguments() {
-        return getArguments() != null && getArguments().containsKey(ARG_DAY);
+    private boolean hasArgumentsFor(String arg) {
+        return getArguments() != null && getArguments().containsKey(arg);
     }
 
 }
