@@ -1,17 +1,15 @@
 package com.brbw.codemash.controllers.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import com.brbw.codemash.CodeMashService;
 import com.brbw.codemash.R;
 import com.brbw.codemash.models.Day;
 import com.brbw.codemash.models.Session;
-import com.brbw.codemash.util.network.SimpleJsonRequester;
+import com.brbw.codemash.tasks.SessionRetrievalTask;
 
 import java.util.List;
 
@@ -38,27 +36,23 @@ public class SessionListFragment extends ListFragment {
         if (this.hasArgumentsFor(ARG_DAY)) {
             day = (Day) getArguments().getSerializable(ARG_DAY);
 
-            AsyncTask<Void,Void,List<Session>> task = new AsyncTask<Void, Void, List<Session>>() {
-                @Override
-                protected List<Session> doInBackground(Void... params) {
-                    CodeMashService service = new CodeMashService(new SimpleJsonRequester());
-                    return service.getSessions();
-                }
-
+            SessionRetrievalTask task = new SessionRetrievalTask() {
                 @Override
                 protected void onPostExecute(List<Session> sessions) {
                     super.onPostExecute(sessions);
-                    ArrayAdapter<Session> arrayAdapter = new ArrayAdapter<>(getActivity()
-                            , android.R.layout.simple_list_item_1,
-                            sessions);
-
-                    setListAdapter(arrayAdapter);
+                    fillListWith(sessions);
                 }
             };
 
             task.execute();
         }
+    }
 
+    private void fillListWith(List<Session> sessions) {
+        ArrayAdapter<Session> arrayAdapter = new ArrayAdapter<>(getActivity()
+                , android.R.layout.simple_list_item_1,
+                sessions);
+        setListAdapter(arrayAdapter);
     }
 
     @Override
