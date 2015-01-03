@@ -1,16 +1,13 @@
 package com.brbw.codemash.controllers.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.brbw.codemash.R;
 import com.brbw.codemash.models.Session;
-import com.squareup.picasso.Picasso;
+import com.brbw.codemash.util.ViewHelper;
 
 import java.util.List;
 
@@ -26,29 +23,15 @@ public class SessionListAdapter extends ArrayAdapter<Session> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(LAYOUT_ID, parent, false);
+            convertView = ViewHelper.inflateForAdapter(getContext(), parent, LAYOUT_ID);
         }
 
         Session session = getItem(position);
 
-        TextView title = (TextView) convertView.findViewById(R.id.session_title);
-        title.setText(session.getTitle());
-
-
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.speaker_image);
-        String firstSpeakerUrl = session.getSpeakers().get(0).getGravatarUrl();
-
-        String imageUrl;
-        if (firstSpeakerUrl != null && !firstSpeakerUrl.startsWith("http")) {
-            imageUrl = String.format("http:%s?s=100", firstSpeakerUrl);
-        } else {
-            imageUrl = String.format("%s?s=100", firstSpeakerUrl);
-        }
-
-        Picasso.with(getContext())
-                .load(imageUrl)
-                .into(imageView);
+        ViewHelper viewHelper = new ViewHelper(convertView);
+        viewHelper.setText(R.id.session_title, session.getTitle());
+        viewHelper.loadImageFromUrlIntoImageView(R.id.speaker_image,
+                String.format("%s?s=100", session.getSessionImageUrl()));
 
         return convertView;
     }

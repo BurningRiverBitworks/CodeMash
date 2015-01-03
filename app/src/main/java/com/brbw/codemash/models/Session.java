@@ -50,6 +50,11 @@ public class Session implements Comparable<Session>, Serializable {
         return sessions;
     }
 
+    public String getSessionImageUrl() {
+        List<SparseSpeaker> speakers = getSpeakers();
+        return speakers.size() > 0 ? speakers.get(0).getGravatarUrl() : "";
+    }
+
     public int getId() {
         return id;
     }
