@@ -3,24 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/speaker_image"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_weight=".10"
             android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/session_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".85"
+            android:text="Temp Title" />
+
+        <CheckBox
+            android:id="@+id/session_favorite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Temp Title" />
+            android:layout_weight=".05" />
 
     </LinearLayout>
 
