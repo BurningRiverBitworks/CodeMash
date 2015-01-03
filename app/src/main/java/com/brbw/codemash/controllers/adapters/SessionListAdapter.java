@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.brbw.codemash.CodeMashApplication;
 import com.brbw.codemash.R;
@@ -15,6 +14,8 @@ import com.brbw.codemash.models.UserPreferences;
 import com.brbw.codemash.util.ViewHelper;
 
 import java.util.List;
+
+import static com.brbw.codemash.util.ViewHelper.findView;
 
 public class SessionListAdapter extends ArrayAdapter<Session> {
 
@@ -38,9 +39,15 @@ public class SessionListAdapter extends ArrayAdapter<Session> {
         viewHelper.loadImageFromUrlIntoImageView(R.id.speaker_image,
                 String.format("%s?s=100", session.getSessionImageUrl()));
 
-        CheckBox favorites = ViewHelper.findView(convertView, R.id.session_favorite);
-        favorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        CheckBox favorites = findView(convertView, R.id.session_favorite);
+        addFavoritesChangeListener(session, favorites);
+        favorites.setChecked(session.isFavorited());
 
+        return convertView;
+    }
+
+    private void addFavoritesChangeListener(final Session session, CheckBox favorites) {
+        favorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 UserPreferences userPreferences = CodeMashApplication.userPreferencesInstance();
@@ -55,9 +62,5 @@ public class SessionListAdapter extends ArrayAdapter<Session> {
                 }
             }
         });
-
-        favorites.setChecked(session.isFavorited());
-
-        return convertView;
     }
 }
