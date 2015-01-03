@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.brbw.codemash.R;
 import com.brbw.codemash.models.Session;
 import com.brbw.codemash.util.ViewHelper;
 import com.squareup.picasso.Picasso;

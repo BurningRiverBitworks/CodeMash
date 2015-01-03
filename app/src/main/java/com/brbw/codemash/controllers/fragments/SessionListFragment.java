@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
 
 import com.brbw.codemash.R;
-import com.brbw.codemash.controllers.adapters.SectionsPagerAdapter;
 import com.brbw.codemash.controllers.adapters.SessionListAdapter;
 import com.brbw.codemash.models.Day;
 import com.brbw.codemash.models.Session;
@@ -50,7 +48,7 @@ public class SessionListFragment extends ListFragment {
     }
 
     private void fillListWith(List<Session> sessions) {
-        SessionListAdapter adapter = new SessionListAdapter(getActivity(),sessions);
+        SessionListAdapter adapter = new SessionListAdapter(getActivity(), sessions);
         setListAdapter(adapter);
     }
 
