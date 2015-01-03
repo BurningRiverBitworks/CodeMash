@@ -34,7 +34,6 @@ public class SessionListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         if (this.hasArgumentsFor(ARG_DAY)) {
             day = (Day) getArguments().getSerializable(ARG_DAY);
 
@@ -46,7 +45,7 @@ public class SessionListFragment extends ListFragment {
                 }
             };
 
-            task.execute();
+            task.execute(day);
         }
     }
 
