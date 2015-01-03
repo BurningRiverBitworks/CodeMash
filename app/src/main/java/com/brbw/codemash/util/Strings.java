@@ -1,5 +1,7 @@
 package com.brbw.codemash.util;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,11 +17,13 @@ import java.util.List;
 
 public class Strings {
 
+    private static final String LOG_TAG = "Strings";
+
     public static String nullSafeStringFrom(JSONObject json, String key) {
         try {
             if (json.has(key)) return json.getString(key);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return "";
     }
@@ -35,7 +39,7 @@ public class Strings {
             try {
                 rooms.add(array.getString(i));
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.w(LOG_TAG, e);
             }
         }
         return rooms;
@@ -46,7 +50,7 @@ public class Strings {
         try {
             if (json.has(key)) array = json.getJSONArray(key);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return array;
     }
@@ -74,7 +78,7 @@ public class Strings {
         try {
             return URLEncoder.encode(string, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
             return "";
         }
     }

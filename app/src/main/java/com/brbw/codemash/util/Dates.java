@@ -1,5 +1,7 @@
 package com.brbw.codemash.util;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.text.DateFormat;
@@ -12,15 +14,13 @@ import static com.brbw.codemash.util.Strings.nullSafeStringFrom;
 
 public class Dates {
 
+    private static final String LOG_TAG = "Dates";
+
     public static Date dateFrom(JSONObject json, String key, String format) {
 
         String time = nullSafeStringFrom(json, key);
 
-        if (isNullOrEmpty(time)) {
-            return new Date(0);
-        }
-
-        return dateOrDefault(format, time, 0);
+        return isNullOrEmpty(time) ? new Date(0) : dateOrDefault(format, time, 0);
     }
 
     public static String formatedDate(Date date, String format) {
@@ -32,7 +32,7 @@ public class Dates {
         try {
             return new SimpleDateFormat(format).parse(time);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
             return new Date(milliseconds);
         }
     }

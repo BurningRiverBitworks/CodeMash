@@ -1,6 +1,8 @@
 package com.brbw.codemash;
 
 
+import android.util.Log;
+
 import com.brbw.codemash.models.Session;
 import com.brbw.codemash.models.Speaker;
 import com.brbw.codemash.util.network.SimpleJsonRequester;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CodeMashService {
+
+    private static final String LOG_TAG = "CodeMashService";
 
     public final static String SERVICE_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
@@ -30,7 +34,7 @@ public class CodeMashService {
         try {
             return Session.listFrom(jsonArrayCalling("sessionsdata"));
         } catch (IOException | JSONException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return new ArrayList<>();
     }
@@ -39,7 +43,7 @@ public class CodeMashService {
         try {
             return Speaker.speakerListFrom(jsonArrayCalling("speakersdata"));
         } catch (IOException | JSONException e) {
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return new ArrayList<>();
     }
@@ -54,7 +58,7 @@ public class CodeMashService {
             speakerJson = simpleJsonRequester.getObject(SERVICE_BASE_URL + "speakersdata/" + id);
         } catch (IOException | JSONException e) {
             speakerJson = new JSONObject();
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return new Speaker(speakerJson);
     }
@@ -65,7 +69,7 @@ public class CodeMashService {
             speakerJson = simpleJsonRequester.getObject(SERVICE_BASE_URL + "sessionsdata/" + id);
         } catch (IOException | JSONException e) {
             speakerJson = new JSONObject();
-            e.printStackTrace();
+            Log.w(LOG_TAG, e);
         }
         return new Session(speakerJson);
     }
