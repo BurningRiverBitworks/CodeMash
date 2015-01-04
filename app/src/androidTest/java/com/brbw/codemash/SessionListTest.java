@@ -35,10 +35,10 @@ public class SessionListTest extends CodeMashTestCase {
     }
 
     public void testThatItFiltersSessionsByDay() {
-        List<Session> tuesdaysSessions = sessionList.getSessionsFor(Day.TUESDAY);
-        List<Session> wednesdaySessions = sessionList.getSessionsFor(Day.WEDNESDAY);
-        List<Session> thursdaySessions = sessionList.getSessionsFor(Day.THURSDAY);
-        List<Session> fridaySessions = sessionList.getSessionsFor(Day.FRIDAY);
+        List<Session> tuesdaysSessions = sessionList.getFilteredSessionsFor(Day.TUESDAY);
+        List<Session> wednesdaySessions = sessionList.getFilteredSessionsFor(Day.WEDNESDAY);
+        List<Session> thursdaySessions = sessionList.getFilteredSessionsFor(Day.THURSDAY);
+        List<Session> fridaySessions = sessionList.getFilteredSessionsFor(Day.FRIDAY);
 
         assertEquals(2, tuesdaysSessions.size());
         assertEquals(1, wednesdaySessions.size());

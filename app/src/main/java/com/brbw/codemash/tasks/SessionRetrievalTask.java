@@ -16,7 +16,7 @@ public class SessionRetrievalTask extends AsyncTask<Day, Void, List<Session>> {
     protected List<Session> doInBackground(Day... day) {
         if (this.has(day)) {
             SessionList sessionList = CodeMashApplication.sessionListInstance();
-            return sessionList.getSessionsFor(day[0]);
+            return sessionList.getFilteredSessionsFor(day[0]);
         } else {
             return Arrays.asList();
         }

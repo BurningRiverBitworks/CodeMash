@@ -39,7 +39,7 @@ public class SessionList {
         }
     }
 
-    public List<Session> getSessionsFor(Day dayOfTheWeek) {
+    public List<Session> getFilteredSessionsFor(Day dayOfTheWeek) {
         List<Session> sessionsForDay = new ArrayList<>();
         for (Session session : getAllSessions()) {
             if (dayOfTheWeek.isOn(session.getSessionStartTime())) {
