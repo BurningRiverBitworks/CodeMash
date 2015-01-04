@@ -63,6 +63,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             });
