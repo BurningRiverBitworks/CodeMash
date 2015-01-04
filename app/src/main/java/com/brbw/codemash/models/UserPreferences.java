@@ -3,7 +3,9 @@ package com.brbw.codemash.models;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserPreferences {
@@ -46,5 +48,13 @@ public class UserPreferences {
 
     public void isFavoritesOnly(boolean favoritesOnly) {
         UserPreferences.favoritesOnly = favoritesOnly;
+    }
+
+    public List<Integer> getFavoriteSessionIds() {
+        List<Integer> favoriteIds = new ArrayList<>();
+        for (String favorite : getFavorites()) {
+            favoriteIds.add(Integer.parseInt(favorite));
+        }
+        return favoriteIds;
     }
 }

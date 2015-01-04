@@ -24,9 +24,19 @@ public class SessionList {
         if (sessions == null) {
             synchronized (lock) {
                 sessions = service.getSessions();
+                addFavoritedStateToSessions();
             }
         }
         return sessions;
+    }
+
+    private void addFavoritedStateToSessions() {
+        List<Integer> favoriteSessionIds = userPreferences.getFavoriteSessionIds();
+        for (Session session : getAllSessions()) {
+            if (favoriteSessionIds.contains(session.getId())) {
+                session.isFavorited(true);
+            }
+        }
     }
 
     public List<Session> getSessionsFor(Day dayOfTheWeek) {
