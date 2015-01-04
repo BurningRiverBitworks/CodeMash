@@ -1,11 +1,14 @@
 package com.brbw.codemash.controllers.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.View;
+import android.widget.ListView;
 
 import com.brbw.codemash.R;
+import com.brbw.codemash.controllers.activities.SessionDetailsActivity;
 import com.brbw.codemash.controllers.adapters.SessionListAdapter;
 import com.brbw.codemash.models.Day;
 import com.brbw.codemash.models.Session;
@@ -45,6 +48,12 @@ public class SessionListFragment extends ListFragment {
 
             task.execute(day);
         }
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new Intent(getActivity(), SessionDetailsActivity.class);
+        startActivity(intent);
     }
 
     private void fillListWith(List<Session> sessions) {
