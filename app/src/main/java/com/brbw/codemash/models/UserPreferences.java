@@ -43,7 +43,7 @@ public class UserPreferences {
     }
 
     public boolean isFavoritesOnly() {
-        return favoritesOnly;
+        return UserPreferences.favoritesOnly;
     }
 
     public void isFavoritesOnly(boolean favoritesOnly) {

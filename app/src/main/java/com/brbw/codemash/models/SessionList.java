@@ -24,15 +24,15 @@ public class SessionList {
         if (sessions == null) {
             synchronized (lock) {
                 sessions = service.getSessions();
-                addFavoritedStateToSessions();
             }
         }
+        addFavoritedStateToSessions(sessions);
         return sessions;
     }
 
-    private void addFavoritedStateToSessions() {
+    private void addFavoritedStateToSessions(List<Session> sessions) {
         List<Integer> favoriteSessionIds = userPreferences.getFavoriteSessionIds();
-        for (Session session : getAllSessions()) {
+        for (Session session : sessions) {
             if (favoriteSessionIds.contains(session.getId())) {
                 session.isFavorited(true);
             }
@@ -53,9 +53,11 @@ public class SessionList {
         boolean favoritesEnabled = userPreferences.isFavoritesOnly();
         List<Session> allSessionsAfterFilters = new ArrayList<>();
         for (Session session : sessionsForDay) {
-            if (favoritesEnabled && session.isFavorited()) {
-                allSessionsAfterFilters.add(session);
-            } else {
+            if(favoritesEnabled) {
+                if(session.isFavorited()) {
+                    allSessionsAfterFilters.add(session);
+                }
+            }else {
                 allSessionsAfterFilters.add(session);
             }
         }
