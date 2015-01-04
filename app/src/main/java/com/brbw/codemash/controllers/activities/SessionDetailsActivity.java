@@ -33,3 +33,4 @@ public class SessionDetailsActivity extends ActionBarActivity {
                 .commit();
     }
 }
+

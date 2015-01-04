@@ -1,12 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/session_title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@android:color/holo_blue_dark">
+
+            <TextView
+                android:id="@+id/session_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="Temp Title"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/session_speakers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/session_title"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="Test Speaker, Test Speaker 2" />
+
+
+            <ImageView
+                android:id="@+id/session_speaker1_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/session_title"
+                android:padding="@dimen/activity_vertical_margin" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/session_time_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Tuesday 8:00 a.m. - 9:00 p.m" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/session_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Java, Android, Lolz" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/session_rooms"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Room 101, Room 334" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/session_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dip"
+                android:text="This session is all about being ridiculously awesome. only the awesomeest people will be at the sessions and if you aren't there you arent awesome. You should totally be there becasue it's going to be the raddest thing ever. You'll be able to brag to all of your friends if you come." />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
