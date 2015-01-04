@@ -28,7 +28,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(new SectionsPagerAdapter(this, getSupportFragmentManager()));
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        mViewPager.setAdapter(sectionsPagerAdapter);
 
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -37,10 +38,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             }
         });
 
-        for (int i = 0; i < new SectionsPagerAdapter(this, getSupportFragmentManager()).getCount(); i++) {
+        for (int i = 0; i < sectionsPagerAdapter.getCount(); i++) {
             actionBar.addTab(
                     actionBar.newTab()
-                            .setText(new SectionsPagerAdapter(this, getSupportFragmentManager()).getPageTitle(i))
+                            .setText(sectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
     }
