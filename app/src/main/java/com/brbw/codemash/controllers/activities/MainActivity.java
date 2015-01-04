@@ -1,5 +1,7 @@
 package com.brbw.codemash.controllers.activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -57,6 +59,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         int id = item.getItemId();
         if (id == R.id.menu_filter) {
             FilterDialogFragment filterDialogFragment = FilterDialogFragment.newInstance();
+            filterDialogFragment.setOnClickListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            });
             filterDialogFragment.show(getSupportFragmentManager(), FilterDialogFragment.TAG);
             return true;
         }

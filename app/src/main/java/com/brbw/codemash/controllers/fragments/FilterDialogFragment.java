@@ -14,9 +14,14 @@ import com.brbw.codemash.models.UserPreferences;
 public class FilterDialogFragment extends DialogFragment {
 
     public static final String TAG = "FILTER_DIALOG";
+    private DialogInterface.OnClickListener listener;
 
     public static FilterDialogFragment newInstance() {
         return new FilterDialogFragment();
+    }
+
+    public void setOnClickListener(DialogInterface.OnClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,7 +42,7 @@ public class FilterDialogFragment extends DialogFragment {
                         }
                     }
                 })
-                .setPositiveButton(android.R.string.ok, null)
+                .setPositiveButton(android.R.string.ok, listener)
                 .create();
     }
 }
