@@ -11,10 +11,12 @@ import java.util.List;
 public class SessionList {
     private final Object lock = new Object();
     private final CodeMashService service;
+    private final UserPreferences userPreferences;
     private List<Session> sessions;
 
-    public SessionList(CodeMashService service) {
+    public SessionList(CodeMashService service, UserPreferences userPreferences) {
         this.service = service;
+        this.userPreferences = userPreferences;
     }
 
     public List<Session> getAllSessions() {
@@ -34,7 +36,20 @@ public class SessionList {
                 sessionsForDay.add(session);
             }
         }
-        return sessionsForDay;
+        return filterByFavoritedPreference(sessionsForDay);
+    }
+
+    private List<Session> filterByFavoritedPreference(List<Session> sessionsForDay) {
+        boolean favoritesEnabled = userPreferences.isFavoritesOnly();
+        List<Session> allSessionsAfterFilters = new ArrayList<>();
+        for (Session session : sessionsForDay) {
+            if (favoritesEnabled && session.isFavorited()) {
+                allSessionsAfterFilters.add(session);
+            } else {
+                allSessionsAfterFilters.add(session);
+            }
+        }
+        return allSessionsAfterFilters;
     }
 
     public Session getSession(int sessionId) {

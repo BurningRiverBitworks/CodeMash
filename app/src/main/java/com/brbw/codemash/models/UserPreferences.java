@@ -12,6 +12,7 @@ public class UserPreferences {
     private static final String FAVORITES = "FAVORITES";
 
     private final Context context;
+    private static boolean favoritesOnly;
 
     public UserPreferences(Context context) {
         this.context = context;
@@ -37,5 +38,13 @@ public class UserPreferences {
     private Set<String> getFavorites() {
         SharedPreferences preferences = context.getSharedPreferences(USER_PREFERENCES_KEY, Context.MODE_PRIVATE);
         return preferences.getStringSet(FAVORITES, new HashSet<String>());
+    }
+
+    public boolean isFavoritesOnly() {
+        return favoritesOnly;
+    }
+
+    public void isFavoritesOnly(boolean favoritesOnly) {
+        UserPreferences.favoritesOnly = favoritesOnly;
     }
 }

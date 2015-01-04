@@ -19,7 +19,7 @@ public class CodeMashApplication extends Application {
 
     public synchronized static SessionList sessionListInstance() {
         if (sessionList == null) {
-            sessionList = new SessionList(new CodeMashService(new SimpleJsonRequester()));
+            sessionList = new SessionList(new CodeMashService(new SimpleJsonRequester()), userPreferencesInstance());
         }
         return sessionList;
     }
