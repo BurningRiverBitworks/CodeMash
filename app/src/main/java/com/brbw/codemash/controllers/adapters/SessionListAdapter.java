@@ -20,6 +20,7 @@ import static com.brbw.codemash.util.ViewHelper.findView;
 public class SessionListAdapter extends ArrayAdapter<Session> {
 
     private static final int LAYOUT_ID = R.layout.adapter_session_list_item;
+    private static final int GRAVATAR_IMAGE_SIZE_PARAMETER = 100;
 
     public SessionListAdapter(Context context, List<Session> sessions) {
         super(context, LAYOUT_ID, sessions);
@@ -37,7 +38,7 @@ public class SessionListAdapter extends ArrayAdapter<Session> {
         ViewHelper viewHelper = new ViewHelper(convertView);
         viewHelper.setText(R.id.session_title, session.getTitle());
         viewHelper.loadImageFromUrlIntoImageView(R.id.speaker_image,
-                String.format("%s?s=100", session.getSessionImageUrl()));
+                String.format("%s?s=%d", session.getSessionImageUrl(),GRAVATAR_IMAGE_SIZE_PARAMETER));
 
         CheckBox favorites = findView(convertView, R.id.session_favorite);
         addFavoritesChangeListener(session, favorites);
