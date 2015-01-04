@@ -52,7 +52,8 @@ public class SessionListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = new Intent(getActivity(), SessionDetailsActivity.class);
+        Session session = (Session) getListView().getItemAtPosition(position);
+        Intent intent = SessionDetailsActivity.newIntentToStart(getActivity(),session);
         startActivity(intent);
     }
 
