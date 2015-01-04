@@ -16,4 +16,7 @@
         <item>Show Favorites Only</item>
     </array>
 
+    <string name="twitter_message">Checking out %s at #CodeMash!</string>
+    <string name="twitter_url">https://twitter.com/intent/tweet?text=%s</string>
+
 </resources>
