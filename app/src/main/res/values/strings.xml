@@ -8,5 +8,12 @@
     <string name="thursday">thurs</string>
     <string name="friday">fri</string>
     <string name="empty_session_list_message">No sessions available!</string>
+    <string name="filter">filter</string>
+    <string name="filter_title">Filter Sessions</string>
+
+    <array name="favorites">
+        <item>Show All</item>
+        <item>Show Favorites Only</item>
+    </array>
 
 </resources>
